@@ -13,7 +13,9 @@
 	Condition check: After each iteration (exit-controlled).
 */
 
+#define _USE_MATH_DEFINES
 #include <stdio.h>
+#include <math.h>
 
 int askPositive(){
     // • program that continuously asks for positive number as input:
@@ -136,6 +138,74 @@ int printEvenSum(){
 }
 
 
+#define PI 3.14159265358979323846
+
+double sinTaylor(){
+    double angle;
+    printf("Enter angles: ");
+    scanf("%lf", &angle);
+    double x = (M_PI/180) * angle;
+
+    double terms;
+    printf("Enter terms: ");
+    scanf("%lf", &terms);
+
+    double value = 0.0;
+
+    for(double i=1; i<=terms; i++){
+        double value1 = 1.0;
+        double value2 = 1.0;
+        // Factorial
+        for(double j=1; j<=(2*i-1); j++){
+            value1 *= j;
+        }
+        // Power (Sign)
+        if(fmod(i, 2.0) == 0.0){
+        value2 = - pow(x,(2*i-1));
+        } else{
+        value2 = + pow(x,(2*i-1));
+        }
+        
+        value = value + (value2 / value1);
+    }
+    return value;
+}
+
+
+double cosTaylor(){
+    double angle;
+    printf("Enter angle: ");
+    scanf("%lf", &angle);
+    double x = angle * (M_PI/180);
+
+    double terms;
+    printf("Enter terms: ");
+    scanf("%lf", &terms);
+
+    double value = 0.0;
+    for(double i=1; i<=terms; i++){
+        double value1 = 1.0;
+        double value2 = 1.0;
+        // Factorial
+        for(int j=1; j<=(2*i-2); j++){
+            value1 *= j;
+        }
+        // Power (Sign)
+        if(fmod(i,2.0) == 0){
+            value2 = - pow(x, (2*i-2));
+        } else{
+            value2 = + pow(x, (2*i-2));
+        }
+        value = value + (value2 / value1);
+    }
+
+    return value;
+}
+
+
+double tanTaylor(){
+    
+}
 
 int main(){
     // askPositive();
@@ -153,6 +223,11 @@ int main(){
     // int evenSum = printEvenSum();
     // printf("Summation is: %d", evenSum);
 
+    // double sinX = sinTaylor();
+    // printf("%lf", sinX);
+
+    double cosX = cosTaylor();
+    printf("%lf", cosX);
     
     return 0;
 }
