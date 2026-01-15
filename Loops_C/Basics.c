@@ -204,7 +204,7 @@ double cosTaylor(){
 
 
 double tanTaylor(){
-    
+
 }
 
 int main(){
@@ -226,8 +226,8 @@ int main(){
     // double sinX = sinTaylor();
     // printf("%lf", sinX);
 
-    double cosX = cosTaylor();
-    printf("%lf", cosX);
+    // double cosX = cosTaylor();
+    // printf("%lf", cosX);
     
     return 0;
 }
