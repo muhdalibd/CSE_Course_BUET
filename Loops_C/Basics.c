@@ -286,6 +286,133 @@ int showCountFactor(){
     return count;
 }
 
+void isNumPrime01(){
+    /*
+        • Primality testing: determine whether a number n is prime or not
+        • Candidates 1, 2, 3, 4 .......... n
+        • Increment a counter whenever you get a candidate which is a factor
+        • Prime numbers always have two factors.
+    */
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    int count = 0;
+    for(int i=1; i<=n; i++){
+        if(n % i == 0){
+            count ++;
+        }
+    }
+
+    if(count == 2) printf("%d is prime.", n);
+    else printf("%d is not prime.", n);
+    return;
+}
+
+
+void isNumPrime02(){
+    /*
+        • Primality testing: determine whether a number n is prime or not
+        • Candidates 1, 2, 3, 4 .......... n
+        • Increment a counter whenever you get a candidate which is a factor
+        • Prime numbers always have two factors.
+    */
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    int count = 0;
+    // • Increase efficiency by going up to the square root
+    for(int i=1; i*i<=n; i++){
+        if(n % i == 0){     // i<=sqrt(n)
+            count ++;
+        }
+    }
+
+    if(count == 1 && n != 1) printf("%d is prime.", n);
+    else printf("%d is not prime.", n);
+    return;
+}
+
+void perfectNum(){
+    /*
+        • Perfect number testing: determine whether a number n is perfect or not
+        • If a number can be made out of its factors
+        • For example 6  1, 2, 3  1+ 2 +3 = 6
+        • Another example 28  1,2,4,7,14  1+2+4+7+14
+        • Candidates 1, 2, 3, 4 .......... n
+        • Add to sum whenever you get a candidate which is a factor
+    */
+
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    int sum = 0;
+    for(int i=1; i<n; i++){
+        if(n % i == 0){
+            sum += i;
+        }
+    }
+
+    if(n == sum) printf("%d is perfect number.", n);
+    else printf("%d is not perfect number.", n);
+    return;
+}
+
+void gcdOfTwoNum01(){
+    /*
+        • GCD of two numbers (Normal way)
+        • GCD(24,54) = 6
+        • Factors of 24  1, 2, 3, 4, 6, 8, 12, 24
+        • Factors of 54  1, 2, 3, 6, 9, 18, 27, 54
+        • Common Factors 1, 2, 3, 6
+        • Greatest Common Factor 6
+    */
+
+    int num1, num2;
+    printf("Enter two number: ");
+    scanf("%d %d", &num1, &num2);
+
+    int gcd = 0;
+    if(num1 == 0 || num2 == 0){
+        gcd = num1 + num2;
+    } else{
+        int min = (num1 > num2) ? num2 : num1;
+        for(int i=1; i<=min; i++){
+            if(num1 % i == 0 && num2 % i == 0){
+                gcd = i;
+            }
+        }
+    }
+    printf("%d", gcd);
+}
+
+void gcdOfTwoNum02(){
+    // Using Modulo Operator (Euclidean Algorithm)
+    int num1, num2;
+    printf("Enter two number: ");
+    scanf("%d %d", &num1, &num2);
+
+    if(num1 < num2){
+        int temp = num1;
+        num1 = num2;
+        num2 = temp;
+    }
+    while(num2 != 0){
+        int num = num1 % num2;
+        num1 = num2;
+        num2 = num;
+    }
+    printf("%d", num1);
+}
+
+void fibonacciSeries(){
+    /*
+    program that will print n-th Fibonacci number where n will be input to your program.
+    */
+}
+
 int main(){
     // askPositive();
     // printSky();
@@ -307,6 +434,10 @@ int main(){
     // showLargestFactor();
     // int count = showCountFactor();
     // printf("%d", count);
+    // isNumPrime01();
+    // isNumPrime02();
+    // perfectNum();
+    // gcdOfTwoNum02();
     
     return 0;
 }
