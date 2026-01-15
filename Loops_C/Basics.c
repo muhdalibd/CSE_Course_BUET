@@ -207,27 +207,106 @@ double tanTaylor(){
 
 }
 
+void showFactor(){
+    // • Show all factors of a number n
+    // • Candidates 1, 2, 3, 4 .......... n
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    for(int i=1; i<=n; i++){
+        if(n % i == 0){
+            printf("%d\n", i);
+        }
+    }
+    return;
+}
+
+
+void showSmallestFactor(){
+    /* • Show smallest factor of a number n (other than 1)
+       • Candidates 1, 2, 3, 4 .......... n
+       • Break on first candidate that becomes a factor
+    */
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    for(int i=1; i<=n; i++){
+        if(i == 1){
+            continue;
+        }
+        if(n % i == 0){
+            printf("%d\n", i);
+            break;
+        }
+    }
+    return;
+}
+
+
+void showLargestFactor(){
+    /* • Show largest factor of a number n (other than n)
+       • Candidates 1, 2, 3, 4 .......... n
+       • Break on first candidate that becomes a factor
+    */
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    for(int i=n; i>=1; i--){
+        if(i == n){
+            continue;
+        }
+        if(n % i == 0){
+            printf("%d\n", i);
+            break;
+        }
+    }
+    return;
+}
+
+int showCountFactor(){
+    /*  • Show how many factors of a number n has
+        • Candidates 1, 2, 3, 4 .......... n
+        • Increment a counter whenever you get a candidate
+          which is a factor
+    */
+
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    int count = 0;
+    for(int i=1; i<=n; i++){
+        if(n % i == 0){
+            count++;
+        }
+    }
+    return count;
+}
+
 int main(){
     // askPositive();
     // printSky();
     // printNum();
     // printOdd();
     // printEven();
-
     // int sum = printSum();
     // printf("Summation is: %d", sum);
-
     // int oddSum = printOddSum();
     // printf("Summation is: %d", oddSum);
-
     // int evenSum = printEvenSum();
     // printf("Summation is: %d", evenSum);
-
     // double sinX = sinTaylor();
     // printf("%lf", sinX);
-
     // double cosX = cosTaylor();
     // printf("%lf", cosX);
+    // showFactor();
+    // showSmallestFactor();
+    // showLargestFactor();
+    // int count = showCountFactor();
+    // printf("%d", count);
     
     return 0;
 }
