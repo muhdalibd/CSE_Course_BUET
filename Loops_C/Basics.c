@@ -13,7 +13,7 @@
 	Condition check: After each iteration (exit-controlled).
 */
 
-#define _USE_MATH_DEFINES
+// #define _USE_MATH_DEFINES
 #include <stdio.h>
 #include <math.h>
 
@@ -137,14 +137,13 @@ int printEvenSum(){
     return sum;
 }
 
-
 #define PI 3.14159265358979323846
 
 double sinTaylor(){
     double angle;
     printf("Enter angles: ");
     scanf("%lf", &angle);
-    double x = (M_PI/180) * angle;
+    double x = (PI/180) * angle;
 
     double terms;
     printf("Enter terms: ");
@@ -171,12 +170,11 @@ double sinTaylor(){
     return value;
 }
 
-
 double cosTaylor(){
     double angle;
     printf("Enter angle: ");
     scanf("%lf", &angle);
-    double x = angle * (M_PI/180);
+    double x = angle * (PI/180);
 
     double terms;
     printf("Enter terms: ");
@@ -202,7 +200,6 @@ double cosTaylor(){
     return value;
 }
 
-
 double tanTaylor(){
 
 }
@@ -221,7 +218,6 @@ void showFactor(){
     }
     return;
 }
-
 
 void showSmallestFactor(){
     /* • Show smallest factor of a number n (other than 1)
@@ -243,7 +239,6 @@ void showSmallestFactor(){
     }
     return;
 }
-
 
 void showLargestFactor(){
     /* • Show largest factor of a number n (other than n)
@@ -272,7 +267,6 @@ int showCountFactor(){
         • Increment a counter whenever you get a candidate
           which is a factor
     */
-
     int n;
     printf("Enter a number: ");
     scanf("%d", &n);
@@ -309,7 +303,6 @@ void isNumPrime01(){
     return;
 }
 
-
 void isNumPrime02(){
     /*
         • Primality testing: determine whether a number n is prime or not
@@ -343,7 +336,6 @@ void perfectNum(){
         • Candidates 1, 2, 3, 4 .......... n
         • Add to sum whenever you get a candidate which is a factor
     */
-
     int n;
     printf("Enter a number: ");
     scanf("%d", &n);
@@ -369,7 +361,6 @@ void gcdOfTwoNum01(){
         • Common Factors 1, 2, 3, 6
         • Greatest Common Factor 6
     */
-
     int num1, num2;
     printf("Enter two number: ");
     scanf("%d %d", &num1, &num2);
@@ -411,7 +402,211 @@ void fibonacciSeries(){
     /*
     program that will print n-th Fibonacci number where n will be input to your program.
     */
+    int n;
+    printf("Enter terms you want: ");
+    scanf("%d", &n);
+
+    int num1 = 0, num2 = 1;
+
+    for(int i=1; i<=n; i++){
+        if(i == 1){
+            printf("%d ", num1);
+        }
+        else if(i == 2){
+            printf("%d ", num2);
+        }
+        else if(i > 2){
+            int curr = num1 + num2;
+            num1 = num2;
+            num2 = curr;
+            printf("%d ", curr);
+        }
+    }
+    return;
 }
+
+int reverseDigit(){
+    /*
+    Write down a program that prints the digits of a number in reverse.
+    */
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    int num = 0;
+    while(n > 0){
+        int digits = n % 10;
+        num = digits + num * 10;
+        n = n / 10;
+    }
+    return num;
+}
+
+int countDigits(){
+    /*
+    Write down a program that prints number of digits of a number n.
+    */
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    int count = 0;
+    while(n > 0){
+        int d = n % 10;
+        count ++;
+        n = n / 10;
+    }
+
+    return count;
+}
+
+void printPrime(){
+    /*
+    prints all prime numbers up to x. x will be input to your program.
+    */
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    for(int i=2; i<=n; i++){
+        int count = 0;
+        for(int j=1; j<=i; j++){
+            if(i % j == 0){
+                count ++;
+            }
+        }
+        if(count == 2){
+            printf("%d ", i);
+        }
+    }
+    return;
+}
+
+void countPrime(){
+    /*
+    • Write down a program that will take an integer x as input and will count
+      and print the number of prime numbers up to x.
+    */
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    int cntPrime = 0;
+
+    for(int i=2; i<=n; i++){
+        int count = 0;
+        for(int j=1; j<=i; j++){
+            if(i % j == 0){
+                count ++;
+            }
+        }
+        if(count == 2){
+            printf("%d ", i);
+            cntPrime ++;
+        }
+    }
+    printf("\nNumber of prime number %d", cntPrime);
+    return;
+}
+
+void printPerfect(){
+    /*
+    • prints all perfect numbers up to x. x will be input to your program.
+    */
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    for(int i=1; i<=n; i++){
+        int factor = 0;
+        for(int j=1; j<i; j++){
+            if(i % j == 0){
+                factor += j;
+            }
+        }
+        if(factor == i){
+            printf("%d ", i);
+        }
+    }
+    return;
+}
+
+void countPerfect(){
+    /*
+    • take an integer x as input and will count and print the number of perfect numbers up to x.
+    */
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    int cntPerfect = 0;
+
+    for(int i=1; i<=n; i++){
+        int factor = 0;
+        for(int j=1; j<i; j++){
+            if(i % j == 0){
+                factor += j;
+            }
+        }
+        if(factor == i){
+            printf("%d ", i);
+            cntPerfect ++;
+        }
+    }
+    printf("\nNumber of Perfect: %d", cntPerfect);
+    return;
+}
+
+void primeFactor(){
+    /*
+    • prints all prime factors of a number x given as input.
+    */
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    for(int i=2; i<=n; i++){
+        if(n % i == 0){
+            int count = 0;
+            for(int j=1; j<=i; j++){
+                if(i % j == 0){
+                    count ++;
+                }
+            }
+            if(count == 2){
+                printf("%d ", i);
+            }
+        }
+    }
+}
+
+void countFibonacci(){
+    /*
+    • take an integer x as input and count and print the number of fibonacci numbers up to x.
+    */
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    for(int i=1; i<=n; i++){
+        int num1 = 0, num2 = 1;
+        for(int j=0; j<=i; j++){
+            if(j == 1){
+            printf("%d ", num1);
+            }
+            else if(j == 2){
+                printf("%d ", num2);
+            }
+            else if(j > 2){
+                int curr = num1 + num2;
+                num1 = num2;
+                num2 = curr;
+                printf("%d ", curr);
+            }
+        }
+    }
+    return;
+}
+
 
 int main(){
     // askPositive();
@@ -438,6 +633,19 @@ int main(){
     // isNumPrime02();
     // perfectNum();
     // gcdOfTwoNum02();
-    
+    // fibonacciSeries();
+    // int num = reverseDigit();
+    // printf("%d", num);
+    // int count = countDigits();
+    // printf("%d", count);
+    // printPrime();
+    // countPrime();
+    // countPerfect();
+    // countFibonacci();
+    primeFactor();
+
+
+
+
     return 0;
 }
