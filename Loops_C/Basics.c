@@ -219,6 +219,24 @@ void showFactor(){
     return;
 }
 
+void showDivisor(){
+    /*
+        Print all Divisors of a given Number
+    */
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    for(int i=1; i*i<=n; i++){
+        if(n % i == 0){
+            printf("%d ", i);
+            if(i != n / i){
+                printf("%d ", n/i);
+            }
+        } 
+    }
+}
+
 void showSmallestFactor(){
     /* • Show smallest factor of a number n (other than 1)
        • Candidates 1, 2, 3, 4 .......... n
@@ -607,6 +625,64 @@ void countFibonacci(){
     return;
 }
 
+void palindrome(){
+    /*
+        Check if a number is Palindrome or Not
+        A palindrome is a number that reads the same backward as forward.
+        They remain the same when their digits are reversed.
+    */
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    int original = n, num = 0;
+    while(n > 0){
+        int digits = n % 10;
+        num = num * 10 + digits;
+        n = n / 10;
+    }
+
+    if(original == num){
+        printf("%d is palindromic.", original);
+    } else{
+        printf("%d isn't palindromic.", original);
+    }
+    return;
+}
+
+void armstrong(){
+    /*
+        # Check if a number is Armstrong Number or not
+        An Amrstrong number is a number that is equal to the sum of its
+        own digits each raised to the power of the number of digits.
+    */
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    int original = n;
+    int dgt_cnt = 0;
+    while(n > 0){
+        int dgt = n % 10;
+        dgt_cnt ++;
+        n = n / 10;
+    }
+
+    int sum = 0;
+    while(n > 0){
+        int dgt = n % 10;
+        sum = sum + pow(dgt, dgt_cnt);
+        n = n / 10;
+    }
+
+    if(original == sum){
+    } else{
+        printf("%d isn't armstrong.", original);
+    }
+    return;
+}
+
+
 
 int main(){
     // askPositive();
@@ -625,6 +701,7 @@ int main(){
     // double cosX = cosTaylor();
     // printf("%lf", cosX);
     // showFactor();
+    showDivisor();
     // showSmallestFactor();
     // showLargestFactor();
     // int count = showCountFactor();
@@ -642,7 +719,9 @@ int main(){
     // countPrime();
     // countPerfect();
     // countFibonacci();
-    primeFactor();
+    // primeFactor();
+    // palindrome();
+    // armstrong();
 
 
 

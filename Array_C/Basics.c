@@ -25,6 +25,8 @@
                 {1, 2, 3}, 
                 {4, 5, 6}
             };
+
+    NOTE: C does not have an in-built FOR EACH loop construct. (C++, Java, C#)
 */
 
 #include<stdio.h>
